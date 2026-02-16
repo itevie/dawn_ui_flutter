@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class DawnFutureBuilder<T> extends StatelessWidget {
   final Future<T> future;
-  final Widget Function()? loading;
-  final Widget Function(Object error)? error;
-  final Widget Function(T value) complete;
+  final Widget Function()? onLoading;
+  final Widget Function(Object error)? onError;
+  final Widget Function(T value) onComplete;
 
   const DawnFutureBuilder({
     super.key,
     required this.future,
-    this.loading,
-    this.error,
-    required this.complete,
+    required this.onComplete,
+    this.onLoading,
+    this.onError,
   });
 
   @override
@@ -20,13 +20,13 @@ class DawnFutureBuilder<T> extends StatelessWidget {
       future: future,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return loading != null ? loading!() : CircularProgressIndicator();
+          return onLoading != null ? onLoading!() : CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          return error != null
-              ? error!(snapshot.error!)
+          return onError != null
+              ? onError!(snapshot.error!)
               : Text("Error: ${snapshot.error}");
         } else {
-          return complete(snapshot.data as T);
+          return onComplete(snapshot.data as T);
         }
       },
     );
