@@ -5,5 +5,7 @@ export 'popup_menu.dart';
 export 'util.dart';
 export 'wrapped_text.dart';
 export "texts.dart";
+export "page_change_card.dart";
+export "basic_scaffold.dart";
 
 export "prompts/prompts.dart";
