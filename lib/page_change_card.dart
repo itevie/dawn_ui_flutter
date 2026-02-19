@@ -20,9 +20,11 @@ class PageChangeCard extends StatelessWidget {
       child: Row(
         children: [
           if (icon != null) ...[Icon(icon), const SizedBox(width: 10)],
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [child, Icon(Icons.chevron_right)],
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [child, Icon(Icons.chevron_right)],
+            ),
           ),
         ],
       ),
