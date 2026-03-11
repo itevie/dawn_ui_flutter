@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Basic scaffold for pages
 class BaseScaffold extends StatelessWidget {
   final Widget body;
   final Widget name;
