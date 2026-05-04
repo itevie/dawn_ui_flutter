@@ -94,9 +94,9 @@ class _ContextMenuState extends State<ContextMenu> {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTapDown: _storePosition,
-      onTap: () {
-        if (widget.onTapToo) _showContextMenu(context, _tapPosition!);
-      },
+      // onTap: () {
+      //   if (widget.onTapToo) _showContextMenu(context, _tapPosition!);
+      // },
       onSecondaryTapDown: (details) {
         _showContextMenu(context, details.globalPosition);
       },
