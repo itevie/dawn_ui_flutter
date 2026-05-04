@@ -20,7 +20,9 @@ class DawnFutureBuilder<T> extends StatelessWidget {
       future: future,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return onLoading != null ? onLoading!() : CircularProgressIndicator();
+          return onLoading != null
+              ? onLoading!()
+              : Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return onError != null
               ? onError!(snapshot.error!)
