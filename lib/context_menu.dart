@@ -26,11 +26,14 @@ class ContextMenu extends StatefulWidget {
   final Widget child;
   final List<ContextMenuItem> Function() items;
   final bool onTapToo;
+  final VoidCallback? onPressed;
+
   const ContextMenu({
     super.key,
     required this.child,
     required this.items,
     this.onTapToo = false,
+    this.onPressed,
   });
 
   @override
@@ -95,6 +98,7 @@ class _ContextMenuState extends State<ContextMenu> {
       behavior: HitTestBehavior.opaque,
       onTapDown: _storePosition,
       onTap: () {
+        if (widget.onPressed != null) widget.onPressed!();
         if (widget.onTapToo) _showContextMenu(context, _tapPosition!);
       },
       onSecondaryTapDown: (details) {
